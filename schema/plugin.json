@@ -1,0 +1,8 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "jupyterlab_file_browser_column_width_fix",
+  "description": "jupyterlab_file_browser_column_width_fix settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

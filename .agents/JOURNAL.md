@@ -1,0 +1,14 @@
+# Claude Code Journal
+
+This journal tracks substantive work on documents, diagrams, and documentation content.
+
+---
+
+1. **Task - scaffold the extension project** (v0.1.0): Created `jupyterlab_file_browser_column_width_fix` as a new JupyterLab extension from copier template `jupyterlab/extension-template` v4.6.5, kind frontend-and-server, targeting installed JupyterLab 4.6.4<br>
+   **Result**: Initialised the repository and `.agents/` layout, wrote the `AGENTS.md` overlay importing the user and workspace layers, replaced `README.md` with the seven-badge form, and set every dependency floor to the installed and tested `major.minor` (`@jupyterlab/*` 4.6, `jupyter_server` 2.21, pytest 9.2, Galata 5.6). `make check_dependencies` built the project-local nodeenv, `make build` exited 0 with `dist/`, `lib/` and labextension output. `INTENT.md` specifies the fix: `DirListing` caches a stale content width, clamps the Name column to its minimum and saves the degenerate state; the Makefile lifecycle, three test tiers and the acc-crit/defects trackers are set up for the implementation phase.
+
+2. **Task - implement the stale column width fix** (v0.1.0): patched `DirListing.prototype` from the plugin's `activate` to recover a stale cached content width and sanitise saved column sizes<br>
+   **Result**: Added `src/columns.ts` with the stock content width formula, a stale-width detector and a sanitiser, and wrapped `_updateColumnSizes`, `_setColumnSize` and `_saveState` behind a prototype marker; a healthy listing takes the stock path, and a missing method logs the JupyterLab version and leaves the listing untouched. Recorded six acceptance criteria in `docs/acc-crit.md` through `pm-tools` (category code `RECOVR` because the tool caps codes at six letters). Wrote the Jest helper suite, the pytest extension-point tests, and five Galata column tests plus the activation test. `make build` and `make test` exit 0: Jest 6 passed, pytest 3 passed, auth gate clean.
+
+3. **Task - run the build and every test tier, close the criteria** (v0.1.1): ran `make install`, `make test` and Galata on port 8890, then closed all six criteria on the recorded evidence<br>
+   **Result**: `make install` exited 0 and raised the version 0.1.0 → 0.1.1; both extension listings report OK. `make test` exited 0 (Jest 6 passed, pytest 3 passed, auth gate clean). Galata 6/6 passed in 42 s after turning the GalaxaHub MOTD tab off. The DELETE warnings came from the workstation `jupyter_lab_config.py`, which sets `AsyncLargeFileManager.delete_to_trash = True` after this config loads; `ui-tests/jupyter_server_test_config.py` now sets that exact class section to False. Closed ACC-RECOVR-1, 2, 5, 6, ACC-STATE-3 and ACC-HEALTH-4 with file:line evidence; `pm-tools check docs` exits 0 with three pre-existing description warnings. The graphify build failed on its Bedrock backend (boto3 absent); the AST-only `graphify update` exits 0. No commit, no publish.
