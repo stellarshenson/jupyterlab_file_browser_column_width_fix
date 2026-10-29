@@ -6,3 +6,7 @@ node_modules
 jupyterlab_file_browser_column_width_fix
 eslint.config.mjs
 .venv
+docs/acc-crit*.md
+docs/defects*.md
+docs/pm-hand-edits.md
+.agents/JOURNAL.md

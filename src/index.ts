@@ -77,7 +77,7 @@ function refreshCachedWidth(listing: IPatchedListing): void {
  */
 function sanitiseListingSizes(listing: IPatchedListing, width: number): void {
   const sizes = listing._columnSizes;
-  if (!sizes || !(width > 0)) {
+  if (!sizes) {
     return;
   }
   const current: IColumnSizes = {
@@ -99,7 +99,7 @@ function sanitiseListingSizes(listing: IPatchedListing, width: number): void {
  * Patch `DirListing.prototype` once. Returns false when it was already patched
  * or when a method it needs is missing.
  */
-function patchDirListing(version: string): boolean {
+export function patchDirListing(version: string): boolean {
   const proto = DirListing.prototype as unknown as Record<string, unknown>;
   if (proto[PATCH_MARKER]) {
     return false;

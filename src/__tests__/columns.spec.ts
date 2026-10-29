@@ -45,8 +45,9 @@ describe('sanitiseColumnSizes', () => {
     expect(clean.is_selected).toBe(COLUMN_MIN_WIDTHS.is_selected);
   });
 
-  it('leaves the stock values alone when the panel width is zero', () => {
-    const sizes = { name: 24, is_selected: 18, last_modified: -48 };
-    expect(sanitiseColumnSizes(sizes, 0)).toEqual(sizes);
+  it('raises the minimums even when the panel width is zero', () => {
+    expect(
+      sanitiseColumnSizes({ name: 24, is_selected: 18, last_modified: -48 }, 0)
+    ).toEqual({ name: 60, is_selected: 18, last_modified: 60 });
   });
 });

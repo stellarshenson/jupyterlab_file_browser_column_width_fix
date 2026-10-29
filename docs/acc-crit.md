@@ -8,7 +8,10 @@ The required behaviours in `INTENT.md` for a file browser whose cached column wi
 
 ## Recovery `RECOVR`
 
+Recovery of a listing whose cached content width is stale: columns, divider and saved bad state
+
 - log: 2026-10-29T03:23:44Z @kj category created
+- log: 2026-10-29T04:24:24Z @kj description added "Recovery of a listing whose cached content width is stale: columns, divider and saved bad state"
 
 - [x] `ACC-RECOVR-1-STALE` **Stale width recovers** - HIGH; a listing whose cached content width is stale or smaller than the panel restores its columns with no sidebar drag and no page reload
   - evidence: init gate 2026-10-29: ui-tests/tests/columns.spec.ts:114 "a stale cached width recovers the Name column" passed (logs/ui-tests-init.log: 6 passed, 0 failed)
@@ -37,18 +40,25 @@ The required behaviours in `INTENT.md` for a file browser whose cached column wi
 
 ## Saved state `STATE`
 
+Column sizes the listing saves to the workspace state
+
 - log: 2026-10-29T03:23:49Z @kj category created
+- log: 2026-10-29T04:24:24Z @kj description added "Column sizes the listing saves to the workspace state"
 
 - [x] `ACC-STATE-3-NODEGEN` **Degenerate sizes are never saved** - MEDIUM; a save writes no negative width and no Name column at its minimum while the panel is wide
-  - evidence: init gate 2026-10-29: src/__tests__/columns.spec.ts:26 "sanitises negative and collapsed sizes against the panel width" passed (logs/test-phase3.log: 6 passed, 0 failed)
+  - evidence: review gate 2026-10-29: src/__tests__/columns.spec.ts:26 "sanitises negative and collapsed sizes against the panel width" passed (logs/test-review1.log: Jest 11 passed, 0 failed)
   - test: Jest `src/__tests__/columns.spec.ts` "sanitises negative and collapsed sizes against the panel width" - restore `{name:24,is_selected:18,last_modified:-48}` at 250 px, assert no negative width and a Name width above the minimum; assert a healthy set comes back unchanged
   - test-tags: UNIT
   - log: 2026-10-29T03:23:49Z @kj added
   - log: 2026-10-29T03:38:36Z @kj closed
+  - log: 2026-10-29T04:24:21Z @kj edited evidence "init gate 2026-10-29: src/**tests**/columns.spec.ts:26 "sanitises negative and collapsed sizes against the panel width" passed (logs/test-phase3.log: 6 passed, 0 failed)" -> "review gate 2026-10-29: src/__tests__/columns.spec.ts:26 "sanitises negative and collapsed sizes against the panel width" passed (logs/test-review1.log: Jest 11 passed, 0 failed)"; reason: the build prettier pass had rewritten the path underscores as emphasis
 
 ## Healthy layout `HEALTH`
 
+The stock path a healthy layout keeps
+
 - log: 2026-10-29T03:23:52Z @kj category created
+- log: 2026-10-29T04:24:24Z @kj description added "The stock path a healthy layout keeps"
 
 - [x] `ACC-HEALTH-4-NOCHANGE` **Healthy layout unchanged** - MEDIUM; with a fresh workspace and a healthy width the Name column keeps its stock width and the divider still resizes it
   - evidence: init gate 2026-10-29: ui-tests/tests/columns.spec.ts:139 "a healthy layout keeps its column widths" passed (logs/ui-tests-init.log: 6 passed, 0 failed)

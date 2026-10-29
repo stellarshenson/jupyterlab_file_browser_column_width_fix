@@ -62,16 +62,14 @@ export function isStaleWidth(
 
 /**
  * Raise negative and collapsed column sizes to a layout that fits the panel.
- * A panel with no width is left untouched, as the stock code does.
+ * The minimum raise runs at any width; only the Name growth needs a measured
+ * panel.
  */
 export function sanitiseColumnSizes(
   sizes: IColumnSizes,
   panelWidth: number
 ): IColumnSizes {
   const result: IColumnSizes = { ...sizes };
-  if (!(panelWidth > 0)) {
-    return result;
-  }
   for (const id of Object.keys(COLUMN_MIN_WIDTHS) as Array<
     keyof IColumnSizes
   >) {
