@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab_file_browser_column_width_fix",
-    "version": "0.1.1",
+    "version": "0.6.3",
     "description": "Keeps the JupyterLab file browser column widths valid when the cached panel width is stale",
     "keywords": [
         "jupyter",
