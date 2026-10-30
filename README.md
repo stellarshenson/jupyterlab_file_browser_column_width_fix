@@ -1,5 +1,8 @@
 # jupyterlab_file_browser_column_width_fix
 
+> [!IMPORTANT]
+> This package is DEPRECATED. [jupyterlab_core_patches_extension](https://github.com/stellarshenson/jupyterlab_core_patches_extension) carries this fix with the other nine in one extension, with one switch per fix. Uninstall this package and the `stellars_jupyterlab_fixes` bundle before installing the replacement. This repository stays published and frozen.
+
 [![GitHub Actions](https://github.com/stellarshenson/jupyterlab_file_browser_column_width_fix/actions/workflows/build.yml/badge.svg)](https://github.com/stellarshenson/jupyterlab_file_browser_column_width_fix/actions/workflows/build.yml)
 [![npm version](https://img.shields.io/npm/v/jupyterlab_file_browser_column_width_fix.svg)](https://www.npmjs.com/package/jupyterlab_file_browser_column_width_fix)
 [![PyPI version](https://img.shields.io/pypi/v/jupyterlab-file-browser-column-width-fix.svg)](https://pypi.org/project/jupyterlab-file-browser-column-width-fix/)
